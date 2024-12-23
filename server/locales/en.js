@@ -2,7 +2,7 @@
 
 export default {
   translation: {
-    appName: 'Fastify Boilerplate',
+    appName: 'Bakend-developer-4 (Fastify)',
     flash: {
       session: {
         create: {

@@ -61,8 +61,8 @@ const setUpStaticAssets = (app) => {
 const setupLocalization = async () => {
   await i18next
     .init({
-      lng: 'en',
-      fallbackLng: 'ru',
+      lng: 'ru',
+      fallbackLng: 'en',
       // debug: isDevelopment,
       resources: {
         ru,
@@ -105,7 +105,7 @@ const registerPlugins = async (app) => {
       failureRedirect: app.reverse('root'),
       failureFlash: i18next.t('flash.authError'),
     },
-  // @ts-ignore
+    // @ts-ignore
   )(...args));
 
   await app.register(fastifyMethodOverride);

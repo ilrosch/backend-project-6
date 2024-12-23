@@ -13,6 +13,7 @@ export default {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
+
   },
   plugins: [new MiniCssExtractPlugin()],
 };
