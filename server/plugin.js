@@ -1,5 +1,6 @@
 // @ts-check
 
+import * as dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fastifyStatic from '@fastify/static';
@@ -25,6 +26,8 @@ import getHelpers from './helpers/index.js';
 import * as knexConfig from '../knexfile.js';
 import models from './models/index.js';
 import FormStrategy from './lib/passportStrategies/FormStrategy.js';
+
+dotenv.config();
 
 const __dirname = fileURLToPath(path.dirname(import.meta.url));
 
@@ -61,8 +64,8 @@ const setUpStaticAssets = (app) => {
 const setupLocalization = async () => {
   await i18next
     .init({
-      lng: 'ru',
-      fallbackLng: 'en',
+      lng: 'en',
+      fallbackLng: 'ru',
       // debug: isDevelopment,
       resources: {
         ru,
@@ -105,7 +108,7 @@ const registerPlugins = async (app) => {
       failureRedirect: app.reverse('root'),
       failureFlash: i18next.t('flash.authError'),
     },
-    // @ts-ignore
+  // @ts-ignore
   )(...args));
 
   await app.register(fastifyMethodOverride);

@@ -4,8 +4,7 @@ block header
   = t('views.users.new.signUp')
 
 block content
-  .card.p-5
-    +formFor()(action=route('users') method='post')
-      +input(user, 'email', errors)(type="text")
-      +input(user, 'password', errors)(type="password")
-      +submit(user)(value=t('views.users.new.submit'))
+  +formFor()(action=route('users') method='post')
+    +input(user, 'email', errors)(type="text")
+    +input(user, 'password', errors)(type="password")
+    +submit(user)(value=t('views.users.new.submit'))

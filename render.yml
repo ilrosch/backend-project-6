@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: fastify
-    runtime: node
-    plan: free
-    autoDeploy: false
-    buildCommand: make setup
-    startCommand: make start
