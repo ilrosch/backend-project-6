@@ -1,9 +1,10 @@
 extends ../layouts/application.pug
 
 block content
-  .card
-    .card-body.p-5.bg-light
-      .display-4= t('views.welcome.index.hello')
-      p.lead= t('views.welcome.index.description')
-      hr
-      a.btn.btn-primary.btn-lg(href="https://hexlet.io")= t('views.welcome.index.more')
+  .row
+    .card.col-md-6.col-12.bg-white.p-3
+      .card-body
+        .fs-1.mb-2= t('views.welcome.index.hello')
+        p.text-secondary= t('views.welcome.index.description')
+        hr
+        a.btn.btn-primary(href="https://hexlet.io")= t('views.welcome.index.more')

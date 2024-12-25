@@ -2,7 +2,7 @@
 
 export default {
   translation: {
-    appName: 'Fastify Boilerplate',
+    appName: 'Task manager',
     flash: {
       session: {
         create: {
@@ -47,9 +47,9 @@ export default {
       },
       welcome: {
         index: {
-          hello: 'Hello from Hexlet!',
-          description: 'Online programming school',
-          more: 'Learn more',
+          hello: 'Welcome to the task manager!',
+          description: 'Create tasks, assign executors and change their statuses. Registration and authentication are required to work with the system.',
+          more: 'Get start',
         },
       },
     },
