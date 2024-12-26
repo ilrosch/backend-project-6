@@ -18,6 +18,14 @@ export default {
           error: 'Failed to register',
           success: 'User registered successfully',
         },
+        edit: {
+          error: 'Failed to update data',
+          success: 'User data successfully updated',
+        },
+        delete: {
+          error: 'Failed to delete',
+          success: 'User deleted successfully',
+        },
       },
       authError: 'Access denied! Please login',
     },
@@ -27,6 +35,9 @@ export default {
         signIn: 'Login',
         signUp: 'Register',
         signOut: 'Logout',
+      },
+      actions: {
+        save: 'Save',
       },
     },
     views: {
@@ -40,10 +51,17 @@ export default {
         id: 'ID',
         email: 'Email',
         createdAt: 'Created at',
+        firstName: 'First name',
+        lastName: 'Last name',
+        password: 'Password',
         new: {
           submit: 'Register',
           signUp: 'Register',
         },
+        fullName: 'Full name',
+        actions: 'Actions',
+        edit: 'Edit',
+        delete: 'Delete',
       },
       welcome: {
         index: {

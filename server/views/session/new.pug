@@ -4,7 +4,8 @@ block header
   = t('views.session.new.signIn')
 
 block content
-  +formFor()(action=route('session') method='post')
-    +input(signInForm, 'email', errors)(type="text")
-    +input(signInForm, 'password')(type="password")
-    +submit(signInForm)(value=t('views.session.new.submit'))
+  .card.bg-white.p-4.col-12.col-md-6
+    +formFor()(action=route('session') method='post')
+      +input(signInForm, 'email', errors)(type="text")
+      +input(signInForm, 'password')(type="password")
+      +submit(signInForm)(value=t('views.session.new.submit'))

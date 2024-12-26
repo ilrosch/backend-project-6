@@ -1,13 +1,14 @@
 extends ../layouts/application.pug
 
 block header
-  = t('views.users.new.signUp')
+  = t('views.users.edit')
 
 block content
   .card.bg-white.p-4.col-12.col-md-6
-    +formFor()(action=route('users') method='post')
+    +formFor()(action=route('users') + `/${user.id}` method='post')
       +input(user, 'firstName', errors)(type="text")
       +input(user, 'lastName', errors)(type="text")
       +input(user, 'email', errors)(type="text")
       +input(user, 'password', errors)(type="password")
-      +submit(user)(value=t('views.users.new.submit'))
+      input(type="hidden" name="_method" value="PATCH")
+      +submit(user)(value=t('layouts.actions.save'))

@@ -1,6 +1,7 @@
 // @ts-check
 
 import _ from 'lodash';
+import path from 'path';
 import fastify from 'fastify';
 
 import init from '../server/plugin.js';
@@ -52,7 +53,7 @@ describe('test users CRUD', () => {
   });
 
   it('create', async () => {
-    const params = testData.users.new;
+    const params = testData.users.create;
     const response = await app.inject({
       method: 'POST',
       url: app.reverse('users'),
@@ -68,6 +69,31 @@ describe('test users CRUD', () => {
     };
     const user = await models.user.query().findOne({ email: params.email });
     expect(user).toMatchObject(expected);
+  });
+
+  it('update', async () => {
+    const params = testData.users.create;
+    const response = await app.inject({
+      method: 'PATCH',
+      url: path.join(app.reverse('users'), '1'),
+      payload: {
+        data: params,
+      },
+    });
+
+    expect(response.statusCode).toBe(302);
+
+    // const user = await app.objection.models.user.query().findById(1);
+    // expect(user).toMatchObject(testData.users.create);
+  });
+
+  it('delete', async () => {
+    const response = await app.inject({
+      method: 'DELETE',
+      url: path.join(app.reverse('users'), '1'),
+    });
+
+    expect(response.statusCode).toBe(302);
   });
 
   afterEach(async () => {
