@@ -6,6 +6,6 @@ block header
 block content
   .card.bg-white.p-4.col-12.col-md-6
     +formFor()(action=route('session') method='post')
-      +input(signInForm, 'email', errors)(type="text")
-      +input(signInForm, 'password')(type="password")
+      +input(signInForm, 'email', 'views.users.email', errors)(type="text")
+      +input(signInForm, 'password', 'views.users.password')(type="password")
       +submit(signInForm)(value=t('views.session.new.submit'))

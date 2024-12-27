@@ -12,6 +12,7 @@ export default (app) => {
     .get('/users/new', { name: 'newUser' }, (req, reply) => {
       const user = new app.objection.models.user();
       reply.render('users/new', { user });
+      return reply;
     })
     .post('/users', async (req, reply) => {
       const user = new app.objection.models.user();
@@ -53,6 +54,7 @@ export default (app) => {
 
       const newUser = new app.objection.models.user();
       newUser.$set(req.body.data);
+
       try {
         const validUser = await app.objection.models.user.fromJson(req.body.data);
         const modifiedUser = await app.objection.models.user.query().findById(id);
@@ -60,7 +62,7 @@ export default (app) => {
           email: validUser.email,
           first_name: validUser.firstName,
           last_name: validUser.lastName,
-          passwordDigest: validUser.passwordDigest,
+          password_digest: validUser.passwordDigest,
         });
         req.flash('info', i18next.t('flash.users.edit.success'));
         reply.redirect(app.reverse('users'));
@@ -68,6 +70,9 @@ export default (app) => {
         req.flash('error', i18next.t('flash.users.edit.error'));
         reply.render('users/edit', { user, errors: data });
       }
+
+      // eslint-disable-next-line consistent-return
+      return reply;
     })
     .delete('/users/:id', async (req, reply) => {
       const { id } = req.params;
@@ -83,10 +88,13 @@ export default (app) => {
         await app.objection.models.user.query().deleteById(id);
         req.logOut();
         req.flash('info', i18next.t('flash.users.delete.success'));
-        reply.redirect(app.reverse('root'));
+        reply.redirect('/');
       } catch (e) {
         req.flash('error', i18next.t('flash.users.delete.error'));
         reply.redirect(app.reverse('users'));
       }
+
+      // eslint-disable-next-line consistent-return
+      return reply;
     });
 };

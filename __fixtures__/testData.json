@@ -14,5 +14,13 @@
       "email": "Rosalee.Ernser@hotmail.com",
       "password": "C97KUBBCz4RVlYe"
     }
+  },
+  "statuses": {
+    "new": {
+      "name": "New status"
+    },
+    "existing": {
+      "name": "Working"
+    }
   }
 }

@@ -27,6 +27,23 @@ export default {
           success: 'User deleted successfully',
         },
       },
+      statuses: {
+        create: {
+          error: 'Failed to created',
+          success: 'Status successfully created',
+        },
+        edit: {
+          error: 'Failed change of status',
+          success: 'Status successfully changed',
+        },
+        delete: {
+          error: 'Failed to delete',
+          success: 'Status successfully deleted',
+        },
+
+        error: 'Status does not exist',
+      },
+
       authError: 'Access denied! Please login',
     },
     layouts: {
@@ -35,6 +52,7 @@ export default {
         signIn: 'Login',
         signUp: 'Register',
         signOut: 'Logout',
+        statuses: 'Statuses',
       },
       actions: {
         save: 'Save',
@@ -68,6 +86,19 @@ export default {
           hello: 'Welcome to the task manager!',
           description: 'Create tasks, assign executors and change their statuses. Registration and authentication are required to work with the system.',
           more: 'Get start',
+        },
+      },
+      statuses: {
+        id: 'ID',
+        name: 'Name',
+        createdAt: 'Created at',
+        actions: 'Actions',
+        create: 'Create',
+        edit: 'Edit',
+        delete: 'Delete',
+        new: {
+          title: 'Create',
+          submit: 'Create',
         },
       },
     },

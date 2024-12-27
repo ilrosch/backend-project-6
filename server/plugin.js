@@ -26,6 +26,7 @@ import getHelpers from './helpers/index.js';
 import * as knexConfig from '../knexfile.js';
 import models from './models/index.js';
 import FormStrategy from './lib/passportStrategies/FormStrategy.js';
+import PageStrategy from './lib/passportStrategies/PageStrategy.js';
 
 dotenv.config();
 
@@ -62,10 +63,9 @@ const setUpStaticAssets = (app) => {
 };
 
 const setupLocalization = async () => {
-  const curLanguage = navigator.language;
   await i18next
     .init({
-      lng: (curLanguage.startsWith('ru')) ? 'ru' : 'en',
+      lng: 'ru',
       fallbackLng: 'en',
       // debug: isDevelopment,
       resources: {
@@ -100,11 +100,12 @@ const registerPlugins = async (app) => {
   );
   fastifyPassport.registerUserSerializer((user) => Promise.resolve(user));
   fastifyPassport.use(new FormStrategy('form', app));
+  fastifyPassport.use(new PageStrategy('page', app));
   await app.register(fastifyPassport.initialize());
   await app.register(fastifyPassport.secureSession());
   await app.decorate('fp', fastifyPassport);
   app.decorate('authenticate', (...args) => fastifyPassport.authenticate(
-    'form',
+    ['form', 'page'],
     {
       failureRedirect: app.reverse('root'),
       failureFlash: i18next.t('flash.authError'),

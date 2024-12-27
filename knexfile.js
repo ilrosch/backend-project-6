@@ -27,10 +27,17 @@ export const test = {
 };
 
 export const production = {
-  client: 'sqlite3',
+  client: 'pg',
   connection: {
-    filename: path.resolve(__dirname, 'database.sqlite'),
+    host: process.env.DB_HOST, // Хост базы данных
+    port: process.env.DB_PORT, // Порт базы данных
+    user: process.env.DB_USER, // Имя пользователя базы данных
+    password: process.env.DB_PASSWORD, // Пароль пользователя
+    database: process.env.DB_NAME, // Имя базы данных
   },
-  useNullAsDefault: true,
+  pool: {
+    min: 2,
+    max: 10,
+  },
   migrations,
 };
